@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 .fa-circle-check {
-  display: none;
+  color: rgb(242, 121, 77);
 }
 body {
   background: linear-gradient(135deg, #1b3678, #49155f);
