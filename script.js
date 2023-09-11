@@ -25,6 +25,7 @@ function printTask() {
     <i class="fa-regular fa-circle" onclick = "mark(${i});"></i>
     <i class="fa-solid fa-circle-check" style="display: none;" onclick = "unmark(${i});"></i>
     <p>${taskList[i].task}</p>
+    <i class="fa-solid fa-pen-to-square" onclick = "editTask(${i});"></i>
     <i class="fa-solid fa-circle-xmark" onclick = "deleteTask(${i});")></i>
     </div>
     `;
@@ -61,6 +62,23 @@ function unCompleted(i) {
   allTask[index].querySelector(".fa-circle-check").style.display = "none";
 }
 
+function editTask(i) {
+  const index = taskList.length - i - 1;
+  const allTask = document.querySelectorAll(".task");
+  const taskText = allTask[index].querySelector("p").innerText;
+  console.log(taskText);
+  allTask[index].innerHTML = `
+  <input type="text" value = "${taskText}" class="edit-task">
+  <button class="edit-btn" onclick = "saveTask(${i});"><i class="fa-solid fa-floppy-disk" ></i></button>
+  `;
+}
+function saveTask(i) {
+  const index = taskList.length - i - 1;
+  const allTask = document.querySelectorAll(".task");
+  taskList[i].task = allTask[index].querySelector(".edit-task").value;
+  console.log(taskList[i], allTask[index].querySelector(".edit-task").value);
+  printTask();
+}
 function saveData() {
   let taskListString = JSON.stringify(taskList);
   localStorage.setItem("taskList", taskListString);
