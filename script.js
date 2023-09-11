@@ -78,6 +78,7 @@ function saveTask(i) {
   taskList[i].task = allTask[index].querySelector(".edit-task").value;
   console.log(taskList[i], allTask[index].querySelector(".edit-task").value);
   printTask();
+  saveData();
 }
 function saveData() {
   let taskListString = JSON.stringify(taskList);
